@@ -6,9 +6,9 @@ public class Dealership {
     private String name;
     private String address;
     private String phone;
-    private ArrayList<String> inventory = new ArrayList<>();
+    private ArrayList<Vehicle> inventory = new ArrayList<>();
 
-    public Dealership(String name, String address, String phone, ArrayList<String> inventory) {
+    public Dealership(String name, String address, String phone, ArrayList<Vehicle> inventory) {
         this.name = name;
         this.address = address;
         this.phone = phone;
@@ -39,38 +39,38 @@ public class Dealership {
         this.phone = phone;
     }
 
-    public ArrayList<String> getVehicleByPrice(int min, int max){
-        ArrayList<String> results = new ArrayList<>();
+    public ArrayList<Vehicle> getVehicleByPrice(int min, int max){
+        ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
-    public ArrayList<String> getVehiclesByMakeModel(){
-        ArrayList<String> results = new ArrayList<>();
+    public ArrayList<Vehicle> getVehiclesByMakeModel(){
+        ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
-    public ArrayList<String> getVehiclesByYear(){
-        ArrayList<String> results = new ArrayList<>();
+    public ArrayList<Vehicle> getVehiclesByYear(){
+        ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
-    public ArrayList<String> getVehicleByColor(int min, int max){
-        ArrayList<String> results = new ArrayList<>();
+    public ArrayList<Vehicle> getVehicleByColor(){
+        ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
-    public ArrayList<String> getVehiclesByMileage(){
-        ArrayList<String> results = new ArrayList<>();
+    public ArrayList<Vehicle> getVehiclesByMileage(){
+        ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
-    public ArrayList<String> getVehiclesByType(){
-        ArrayList<String> results = new ArrayList<>();
+    public ArrayList<Vehicle> getVehiclesByType(){
+        ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
-    public ArrayList<String> getAllVehicles(int min, int max){
-        ArrayList<String> results = new ArrayList<>();
+    public ArrayList<Vehicle> getAllVehicles(){
+        ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
