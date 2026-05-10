@@ -44,27 +44,27 @@ public class Dealership {
         return results;
     }
 
-    public ArrayList<Vehicle> getVehiclesByMakeModel(){
+    public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model){
         ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
-    public ArrayList<Vehicle> getVehiclesByYear(){
+    public ArrayList<Vehicle> getVehiclesByYear(int minYear, int maxYear){
         ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
-    public ArrayList<Vehicle> getVehicleByColor(){
+    public ArrayList<Vehicle> getVehicleByColor(String color){
         ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
-    public ArrayList<Vehicle> getVehiclesByMileage(){
+    public ArrayList<Vehicle> getVehiclesByMileage(int minMileage, int maxMileage){
         ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
 
-    public ArrayList<Vehicle> getVehiclesByType(){
+    public ArrayList<Vehicle> getVehiclesByType(String type){
         ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }
