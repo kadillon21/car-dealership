@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class UserInterface {
 
-    Dealership dealership;
+    private Dealership dealership;
 
     public void display() throws FileNotFoundException {
         boolean programRunning = true;
@@ -78,23 +78,40 @@ public class UserInterface {
 
     }
 
-    public static void displayVehicles(ArrayList<Vehicle> list){
+    public void displayVehicles(ArrayList<Vehicle> list){
+
+        System.out.println("\n╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+        System.out.println("║                                             Vehicles                                                 ║");
+        System.out.println("╠═════════╦════════╦══════════════╦═══════════════════════╦══════════╦═════════╦═══════════╦═══════════╣");
+        System.out.println("║   Vin   ║  Year  ║     Make     ║         Model         ║   Type   ║  Color  ║  Mileage  ║   Price   ║");
+
+        for(Vehicle vehicle : list){
+            System.out.printf("║ %7s ║ %6d ║ %12s ║ %21s ║ %8s ║ %7s ║ %9d ║ %9.2f ║\n",
+                    vehicle.getVin(),
+                    vehicle.getYear(),
+                    vehicle.getMake(),
+                    vehicle.getModel(),
+                    vehicle.getVehicleType(),
+                    vehicle.getColor(),
+                    vehicle.getOdometer(),
+                    vehicle.getPrice());
+        }
+    }
+
+    public void processAllVehiclesRequest(){
+        ArrayList<Vehicle> allCars = dealership.getAllVehicles();
+        this.displayVehicles(allCars);
+    }
+
+    public void processAddVehicleRequest(){
 
     }
 
-    public static void processAllVehiclesRequest(){
+    public void processRemoveVehicleRequest(){
 
     }
 
-    public static void processAddVehicleRequest(){
-
-    }
-
-    public static void processRemoveVehicleRequest(){
-
-    }
-
-    public static void processGetByPrice(){
+    public void processGetByPrice(){
 
     }
 }
