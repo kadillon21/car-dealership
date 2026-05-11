@@ -11,7 +11,7 @@ public class UserInterface {
         boolean programRunning = true;
         init();
 
-        while (programRunning = true) {
+        while (programRunning) {
             System.out.println("\nDealership Search Engine");
             System.out.println("1) Find by price range");
             System.out.println("2) Find by make / model");
@@ -26,33 +26,43 @@ public class UserInterface {
 
             switch (UserInput.promptForInt("Your choice ", 1, 10)){
                 case 1:
-                    dealership.getVehicleByPrice(UserInput.promptForDouble("\nMin ", 1), UserInput.promptForDouble("Max ", 1));
+                    double minPrice = UserInput.promptForInt("Minimum price ", 1);
+                    double maxPrice = UserInput.promptForInt("Maximum price ", 1);
+                    displayVehicles(dealership.getVehicleByPrice(minPrice, maxPrice));
                     break;
                 case 2:
-                    dealership.getVehiclesByMakeModel(UserInput.promptForString("\nMake "), UserInput.promptForString("Model "));
+                    String make = UserInput.promptForString("Make ");
+                    String model = UserInput.promptForString("Model ");
+                    displayVehicles(dealership.getVehiclesByMakeModel(make, model));
                     break;
                 case 3:
-                    dealership.getVehiclesByYear(UserInput.promptForInt("\nMin Year ", 1900), UserInput.promptForInt("Max Year",
-                    1900, 2026));
+                    int minYear = UserInput.promptForInt("\nMin Year ", 1900);
+                    int maxYear = UserInput.promptForInt("Max Year", 1900, 2026);
+                    displayVehicles(dealership.getVehicleByPrice(minYear, maxYear));
                     break;
                 case 4:
-                    dealership.getVehicleByColor(UserInput.promptForString("\nColor "));
+                    String color = UserInput.promptForString("\nColor ");
+                    displayVehicles(dealership.getVehicleByColor(color));
                     break;
                 case 5:
-                    dealership.getVehiclesByMileage(UserInput.promptForInt("\nMin Mileage ", 1), UserInput.promptForInt("Max Mileage ", 1));
+                    int minMileage = UserInput.promptForInt("\nMin Mileage ", 1);
+                    int maxMileage = UserInput.promptForInt("Max Mileage ", 1);
+                    displayVehicles(dealership.getVehiclesByMileage(minMileage, maxMileage));
                     break;
                 case 6:
-                    dealership.getVehiclesByType(UserInput.promptForString("\nVehicle Type "));
+                    String type = UserInput.promptForString("\nVehicle Type ");
+                    displayVehicles(dealership.getVehiclesByType(type));
                     break;
                 case 7:
                     System.out.println();
-                    dealership.getAllVehicles();
+                    processAllVehiclesRequest();
+                    displayVehicles(dealership.getAllVehicles());
                 case 8:
                     System.out.println();
-                    dealership.addVehicle();
+                    processAddVehicleRequest();
                 case 9:
                     System.out.println();
-                    dealership.removeVehicle();
+                    processRemoveVehicleRequest();
                 case 10:
                     programRunning = false;
             }
@@ -68,7 +78,7 @@ public class UserInterface {
 
     }
 
-    public static void displayVehicles(ArrayList<String> list){
+    public static void displayVehicles(ArrayList<Vehicle> list){
 
     }
 
