@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Dealership {
     private String name;
@@ -39,39 +40,50 @@ public class Dealership {
         this.phone = phone;
     }
 
-    public ArrayList<Vehicle> getVehicleByPrice(double min, double max){
-        ArrayList<Vehicle> results = new ArrayList<>();
-        return results;
+    public ArrayList<Vehicle> getVehicleByPrice(double minPrice, double maxPrice){
+        return inventory
+                .stream()
+                .filter(vehicle -> vehicle.getPrice() >= minPrice && vehicle.getPrice() <= maxPrice)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model){
-        ArrayList<Vehicle> results = new ArrayList<>();
-        return results;
+        return inventory
+                .stream()
+                .filter(vehicle -> vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ArrayList<Vehicle> getVehiclesByYear(int minYear, int maxYear){
-        ArrayList<Vehicle> results = new ArrayList<>();
-        return results;
+        return inventory
+                .stream()
+                .filter(vehicle -> vehicle.getYear() >= minYear && vehicle.getYear() <= maxYear)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ArrayList<Vehicle> getVehicleByColor(String color){
-        ArrayList<Vehicle> results = new ArrayList<>();
-        return results;
+        return inventory
+                .stream()
+                .filter(vehicle -> vehicle.getColor().equalsIgnoreCase(color))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ArrayList<Vehicle> getVehiclesByMileage(int minMileage, int maxMileage){
-        ArrayList<Vehicle> results = new ArrayList<>();
-        return results;
+        return inventory
+                .stream()
+                .filter(vehicle -> vehicle.getOdometer() >= minMileage && vehicle.getOdometer() <= maxMileage)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ArrayList<Vehicle> getVehiclesByType(String type){
-        ArrayList<Vehicle> results = new ArrayList<>();
-        return results;
+        return inventory
+                .stream()
+                .filter(vehicle -> vehicle.getVehicleType().equalsIgnoreCase(type))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ArrayList<Vehicle> getAllVehicles(){
-        ArrayList<Vehicle> results = new ArrayList<>();
-        return results;
+        return inventory;
     }
 
     public void addVehicle(){
