@@ -39,7 +39,7 @@ public class Dealership {
         this.phone = phone;
     }
 
-    public ArrayList<Vehicle> getVehicleByPrice(int min, int max){
+    public ArrayList<Vehicle> getVehicleByPrice(double min, double max){
         ArrayList<Vehicle> results = new ArrayList<>();
         return results;
     }

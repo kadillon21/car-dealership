@@ -48,7 +48,7 @@ public class UserInput {
     }
 
     // Prompts user for int but only takes in a minimum as a parameter
-    public static double promptForInt(String prompt, int min) {
+    public static int promptForInt(String prompt, int min) {
         String input;
         int value = 0;
         boolean inputValid = false;
