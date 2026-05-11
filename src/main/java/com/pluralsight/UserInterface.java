@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class UserInterface {
 
@@ -26,42 +27,28 @@ public class UserInterface {
 
             switch (UserInput.promptForInt("Your choice ", 1, 10)){
                 case 1:
-                    double minPrice = UserInput.promptForInt("Minimum price ", 1);
-                    double maxPrice = UserInput.promptForInt("Maximum price ", 1);
-                    displayVehicles(dealership.getVehicleByPrice(minPrice, maxPrice));
+                    processGetByPriceRequest();
                     break;
                 case 2:
-                    String make = UserInput.promptForString("Make ");
-                    String model = UserInput.promptForString("Model ");
-                    displayVehicles(dealership.getVehiclesByMakeModel(make, model));
+                    processGetByMakeModelRequest();
                     break;
                 case 3:
-                    int minYear = UserInput.promptForInt("\nMin Year ", 1900);
-                    int maxYear = UserInput.promptForInt("Max Year", 1900, 2026);
-                    displayVehicles(dealership.getVehicleByPrice(minYear, maxYear));
+                    processGetByYearRequest();
                     break;
                 case 4:
-                    String color = UserInput.promptForString("\nColor ");
-                    displayVehicles(dealership.getVehicleByColor(color));
+                    processGetByColorRequest();
                     break;
                 case 5:
-                    int minMileage = UserInput.promptForInt("\nMin Mileage ", 1);
-                    int maxMileage = UserInput.promptForInt("Max Mileage ", 1);
-                    displayVehicles(dealership.getVehiclesByMileage(minMileage, maxMileage));
+                    processGetByMileageRequest();
                     break;
                 case 6:
-                    String type = UserInput.promptForString("\nVehicle Type ");
-                    displayVehicles(dealership.getVehiclesByType(type));
+                    processGetByTypeRequest();
                     break;
                 case 7:
-                    System.out.println();
                     processAllVehiclesRequest();
-                    displayVehicles(dealership.getAllVehicles());
                 case 8:
-                    System.out.println();
                     processAddVehicleRequest();
                 case 9:
-                    System.out.println();
                     processRemoveVehicleRequest();
                 case 10:
                     programRunning = false;
@@ -78,14 +65,14 @@ public class UserInterface {
 
     }
 
-    public void displayVehicles(ArrayList<Vehicle> list){
+    public void displayVehicles(ArrayList<Vehicle> list) {
 
         System.out.println("\n╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
         System.out.println("║                                             Vehicles                                                 ║");
         System.out.println("╠═════════╦════════╦══════════════╦═══════════════════════╦══════════╦═════════╦═══════════╦═══════════╣");
         System.out.println("║   Vin   ║  Year  ║     Make     ║         Model         ║   Type   ║  Color  ║  Mileage  ║   Price   ║");
 
-        for(Vehicle vehicle : list){
+        for (Vehicle vehicle : list) {
             System.out.printf("║ %7s ║ %6d ║ %12s ║ %21s ║ %8s ║ %7s ║ %9d ║ %9.2f ║\n",
                     vehicle.getVin(),
                     vehicle.getYear(),
@@ -95,11 +82,49 @@ public class UserInterface {
                     vehicle.getColor(),
                     vehicle.getOdometer(),
                     vehicle.getPrice());
+
         }
+        System.out.println("╠═════════╩════════╩══════════════╩═══════════════════════╩══════════╩═════════╩═══════════╩═══════════╣");
+    }
+
+    public void processGetByPriceRequest(){
+        double minPrice = UserInput.promptForInt("Minimum price ", 1);
+        double maxPrice = UserInput.promptForInt("Maximum price ", 1);
+        displayVehicles(dealership.getVehicleByPrice(minPrice, maxPrice));
+    }
+
+    public void processGetByMakeModelRequest(){
+        String make = UserInput.promptForString("Make ");
+        String model = UserInput.promptForString("Model ");
+        displayVehicles(dealership.getVehiclesByMakeModel(make, model));
+    }
+
+    public void processGetByYearRequest(){
+        int minYear = UserInput.promptForInt("\nMin Year ", 1900);
+        int maxYear = UserInput.promptForInt("Max Year", 1900, 2026);
+        displayVehicles(dealership.getVehiclesByYear(minYear, maxYear));
+
+    }
+
+    public void processGetByColorRequest(){
+        String color = UserInput.promptForString("\nColor ");
+        displayVehicles(dealership.getVehicleByColor(color));
+    }
+
+    public void processGetByTypeRequest(){
+        String type = UserInput.promptForString("\nVehicle Type ");
+        displayVehicles(dealership.getVehiclesByType(type));
+    }
+
+    public void processGetByMileageRequest(){
+        int minMileage = UserInput.promptForInt("\nMin Mileage ", 1);
+        int maxMileage = UserInput.promptForInt("Max Mileage ", 1);
+        displayVehicles(dealership.getVehiclesByMileage(minMileage, maxMileage));
     }
 
     public void processAllVehiclesRequest(){
         ArrayList<Vehicle> allCars = dealership.getAllVehicles();
+
         this.displayVehicles(allCars);
     }
 
@@ -111,7 +136,4 @@ public class UserInterface {
 
     }
 
-    public void processGetByPrice(){
-
-    }
 }
