@@ -73,7 +73,7 @@ public class UserInterface {
         System.out.println("║   Vin   ║  Year  ║     Make     ║         Model         ║   Type   ║  Color  ║  Mileage  ║   Price   ║");
 
         for (Vehicle vehicle : list) {
-            System.out.printf("║ %7s ║ %6d ║ %12s ║ %21s ║ %8s ║ %7s ║ %9d ║ %9.2f ║\n",
+            System.out.printf("║ %7d ║ %6d ║ %12s ║ %21s ║ %8s ║ %7s ║ %9d ║ %9.2f ║\n",
                     vehicle.getVin(),
                     vehicle.getYear(),
                     vehicle.getMake(),
